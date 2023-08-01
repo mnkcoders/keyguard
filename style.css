@@ -1,0 +1,155 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap");
+
+* {
+    font-family: "Roboto", sans-serif;
+}
+
+html{
+    overflow: hidden;
+    margin: 0;
+}
+body {
+    background-color: #00DBDE;
+    background-image: linear-gradient(32deg, #00DBDE 0%, #FC00FF 100%);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: 0%;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+.container h1 {
+    color: rgb(97, 218, 251);
+    font-size: 5em;
+    font-weight: lighter;
+    text-align: center;
+}
+
+.container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 25px;
+    background-color: rgba(255,255,255,0.65);
+    border-radius: 2px;
+}
+.container.rounded{ border-radius: 12px; }
+.container.invisible{ background-color: transparent; }
+
+.container>p { 
+    color: #fff;
+}
+
+.textbox {
+    border: none;
+    border-radius: 4px;
+    width: 100%;
+    min-height: 200px;
+    outline: none;
+    padding: 10px 20px;
+    box-sizing: border-box;
+
+    font-size: 23px;
+    color: #5a5a5a;
+    resize: none;
+}
+
+.textbox:focus {
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.15);
+}
+
+/*#main-app {
+    margin: 35px auto;
+    background: #ccc;
+    border-radius: 12px;
+    padding: 25px;
+}*/
+
+#main-app h2 {
+    margin: 0 0 35px;
+    text-align: center;
+    font-size: 2.5em;
+    font-weight: normal;
+}
+#main-app .right{
+    float: right;
+}
+#main-app select,
+#main-app .button,
+#main-app button {
+    font-size: 19px;
+    color: rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    padding: 10px;
+    min-width: 180px;
+    margin: 20px auto;
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: top;
+    border-radius: 12px;
+    transition: 0.3s;
+    text-align: center;
+    box-sizing: border-box;
+}
+#main-app .button.active{
+    background-color: #ffffff;
+}
+#main-app select:focus{ outline: none;}
+#main-app select{
+    appearance: none;
+}
+
+#main-app select:active,
+#main-app select:hover ,
+#main-app button:active,
+#main-app button:hover {
+    color: rgba(0, 0, 0, 0.85);
+    border-color: transparent;
+    background-color: #ffffff;
+}
+
+#main-app button:disabled {
+    opacity: 0.25;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+#main-app .button.active:disabled{
+    background-color: #ffffff;
+}
+
+#main-app>p {
+    font-size: 1.2em;
+    text-align: center;
+    margin: 0 0 25px;
+    color: #980000;
+}
+
+#main-app p.downloading {
+    font-size: 2em;
+    color: #333;
+}
+
+#main-app ul.menu{
+    list-style-type: none;
+    margin: 0; padding: 0;
+}
+#main-app ul.menu.centered{
+    text-align: center;
+}
+#main-app ul.menu.inline > li{
+    display: inline-block;
+}
+#main-app ul.menu.inline > li:not(:nth-child(6)){
+    margin-right: 20px;
+}
+#main-app ul.menu > li.tab{
+    cursor: pointer;
+    width: 80px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: rgba(255,255,255,0.6);
+    transition: ease-in 250ms;
+    margin-bottom: 10px;
+}
+#main-app ul.menu > li.tab:hover{
+    background-color: rgba(255,255,255,1);
+}
