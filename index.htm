@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KeyMap</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+
+<body>
+    <div id="app" class="theme1 white">
+        <div class="side-menu" id="menu">
+            <span id="menu-button">≣</span>
+            <div class="container">
+                <button name="action" value="new">New</button>
+                <hr />
+            </div>
+            <ul id="saved" class="menu container">
+
+            </ul>
+            <div class="container bottom">
+                <hr/>
+                <button name="action" class="special" value="importform">Import</button>
+            </div>
+        </div>
+        <div class="content">
+            <div class="view show" id="main-view">
+                <div class="container centered solid">
+                    <button type="button" class="button center" name="action" value="new">Create new key</button>
+                </div>
+                <div class="container centered solid">
+                    <button name="action" class="special" value="importform">Import</button>
+                </div>
+            </div>
+            <div class="view" id="import-view">
+                <div class="container centered solid">
+                    <textarea class="textbox" id="import" name="import" placeholder="Paste here ..."></textarea>
+                    <button type="button" class="button right" name="action" value="import">Import</button>
+                </div>
+            </div>
+
+            <div class="view" id="display-view">
+                <div class="container solid">
+                    <h1 class="name" id="displayName"></h1>
+                    <hr/>
+                    <label class="title" id="displayDate"></label>
+                    <label class="right title" id="displayMethod"></label>
+                    <p>
+                        <code class="content" id="displayContent"></code>
+                        <button name="action" value="export" class="button">Export</button>
+                        <button name="action" value="show" class="button right" id="show">Decode</button>
+                        <button name="action" value="reveal" class="button special hidden right" id="reveal">Reveal</button>
+                    </p>
+                    <hr/>
+                    <div>
+                        <button name="action" value="remove" class="button" id="remove">Remove</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="view" id="form-view">
+                <div class="container solid">
+                    <input id="name" type="text" name="name" placeholder="Title ..." class="textbox" />
+                    <hr />
+                    <input id="methods" disabled="disabled" type="text" class="button right special" name="method" value="" placeholder="..." />
+                    <select id="method">
+                        <option value="">Select a method</option>
+                    </select>
+                    <hr />
+                    <textarea id="content" name="content" class="textbox" value="" placeholder="Content ..."></textarea>
+
+                    <button type="button" name="action" value="clear">Clear</button>
+                    <button type="button" name="action" value="save" class="right">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="script.js"></script>
+</body>
+
+</html>
