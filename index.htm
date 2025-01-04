@@ -21,6 +21,7 @@
             <div class="container bottom">
                 <hr/>
                 <button name="action" class="special" value="importform">Import</button>
+                <button name="action" class="special" value="settings">Settings</button>
             </div>
         </div>
         <div class="content">
@@ -30,6 +31,9 @@
                 </div>
                 <div class="container centered solid">
                     <button name="action" class="special" value="importform">Import</button>
+                </div>
+                <div class="container centered solid">
+                    <button name="action" class="special" value="settings">Settings</button>
                 </div>
             </div>
             <div class="view" id="import-view">
@@ -71,6 +75,18 @@
 
                     <button type="button" name="action" value="clear">Clear</button>
                     <button type="button" name="action" value="save" class="right">Save</button>
+                </div>
+            </div>
+
+            <div class="view" id="settings-view">
+                <div class="container solid">
+                    <fieldset>
+                        <label for="theme" class="">Select a theme</label>
+                        <select id="theme" class="right" name="theme" size="1">
+                            <option value="theme1" default="default">Theme 1</optijon>
+                            <option value="theme2">Theme 2</optijon>
+                        </select>
+                    </fieldset>
                 </div>
             </div>
         </div>

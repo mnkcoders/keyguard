@@ -133,7 +133,25 @@ View.new = function(){
 View.main = function(){
     return this.set('main-view');
 };
-;
+/**
+ * @returns {View}
+ */
+View.settings = function(){
+    return this.set('settings-view');
+};
+/**
+ * Theme Selector
+ * @returns {Element}
+ */
+View.theme = function(){
+    return document.getElementById('theme');
+};
+/**
+ * @returns {Element}
+ */
+View.app = function(){
+    return document.getElementById('app');
+};
 /**
  * @returns Element
  */
@@ -358,6 +376,11 @@ View.initialize = function(){
         return true;
     });
 
+    this.theme().addEventListener( 'change' , function(e){
+        View.changeTheme( this.value.toString());
+        return true;
+    });
+
     const buttons = Array.prototype.slice.call(document.getElementsByName('action'));
     buttons.forEach( function( btn ){
         btn.addEventListener('click',function(e){
@@ -389,6 +412,9 @@ View.initialize = function(){
                 case 'importform':
                     View.set('import-view');
                     break;
+                case 'settings':
+                    View.set('settings-view');
+                    break;
                 case 'import':
                     const key = KeyGuard.Import(View.inputImport().value);
                     Content.save(key);
@@ -415,6 +441,21 @@ View.initialize = function(){
         return true;
     });
 
+    return this;
+};
+/**
+ * @param {String} selected
+ * @returns {View} 
+ */
+View.changeTheme = function( selected ){
+    ['theme1','theme2'].forEach( function(theme){
+        if( theme === selected ){
+            View.app().classList.add(theme);
+        }
+        else{
+            View.app().classList.remove(theme);
+        }
+    });
     return this;
 };
 /**

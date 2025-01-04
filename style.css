@@ -20,6 +20,15 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
 }
+.theme2{
+    background: #FC00FF;
+    background: linear-gradient(32deg, #00DBDE 0%, #FC00FF 100%);
+    background: -moz-linear-gradient(32deg, #00DBDE 0%, #FC00FF 100%);
+    background: -webkit-linear-gradient(32deg, #00DBDE 0%, #FC00FF 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr="#439CFB", endColorstr="#F187FB", GradientType=1);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
 
 .container {
     box-sizing: border-box;
@@ -50,6 +59,20 @@ body {
 #app.white #menu-button {
     color: #ffffff;
 }
+#app.white fieldset{
+    border: 1px solid rgba(255,255,255,0.5);
+    padding: 20px;
+    margin: 20px 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#app.white .content .container label{
+    color: #ffffff;
+    text-transform: lowercase;
+    letter-spacing: 2px;
+    font-weight: 200;
+}
 
 #app.white .content .container .title{
     background-color: rgba(255,255,255, 0.1);
@@ -57,9 +80,6 @@ body {
     padding: 4px 20px;
     color: #ffffff;
 
-    text-transform: lowercase;
-    letter-spacing: 2px;
-    font-weight: 200;
     min-width: 100px;
     text-align: center;
 }
@@ -316,6 +336,7 @@ body {
     .content .container {
         margin: 40px auto;
         padding: 40px;
+        max-width: 80%;
     }    
 }
 @media only screen and (min-width: 480px) and (max-width: 959px){
