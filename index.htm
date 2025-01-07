@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>KeyMap</title>
+    <title>KeyGuard</title>
     <link rel="stylesheet" type="text/css" href="style.css" />
 </head>
 
@@ -12,34 +12,35 @@
         <div class="side-menu" id="menu">
             <span id="menu-button">≣</span>
             <div class="container">
-                <button name="action" value="new">New</button>
+                <button name="action" value="new" class="special">New</button>
                 <hr />
-            </div>
-            <ul id="saved" class="menu container">
+                <ul id="saved" class="menu container">
 
-            </ul>
+                </ul>
+            </div>
             <div class="container bottom">
                 <hr/>
-                <button name="action" class="special" value="importform">Import</button>
-                <button name="action" class="special" value="settings">Settings</button>
+                <button name="action" class="small inline" value="importform">Import</button>
+                <button name="action" class="small inline right" value="settings">Settings</button>
             </div>
         </div>
         <div class="content">
+            <div id="cover"></div>
             <div class="view show" id="main-view">
                 <div class="container centered solid">
-                    <button type="button" class="button center" name="action" value="new">Create new key</button>
+                    <button type="button" class="button center special" name="action" value="new">Create new key</button>
                 </div>
-                <div class="container centered solid">
-                    <button name="action" class="special" value="importform">Import</button>
+                <div class="container centered">
+                    <button name="action" class="button center" value="importform">Import</button>
                 </div>
-                <div class="container centered solid">
-                    <button name="action" class="special" value="settings">Settings</button>
+                <div class="container centered">
+                    <button name="action" class="button center" value="settings">Settings</button>
                 </div>
             </div>
             <div class="view" id="import-view">
                 <div class="container centered solid">
                     <textarea class="textbox" id="import" name="import" placeholder="Paste here ..."></textarea>
-                    <button type="button" class="button right" name="action" value="import">Import</button>
+                    <button type="button" class="button right special" name="action" value="import">Import</button>
                 </div>
             </div>
 
@@ -52,12 +53,12 @@
                     <p>
                         <code class="content" id="displayContent"></code>
                         <button name="action" value="export" class="button">Export</button>
-                        <button name="action" value="show" class="button right" id="show">Decode</button>
-                        <button name="action" value="reveal" class="button special hidden right" id="reveal">Reveal</button>
+                        <button name="action" value="show" class="button right special" id="show">Decode</button>
+                        <button name="action" value="reveal" class="button hidden right" id="reveal">Reveal</button>
                     </p>
                     <hr/>
                     <div>
-                        <button name="action" value="remove" class="button" id="remove">Remove</button>
+                        <button name="action" value="remove" class="button small" id="remove">Remove</button>
                     </div>
                 </div>
             </div>
@@ -74,7 +75,7 @@
                     <textarea id="content" name="content" class="textbox" value="" placeholder="Content ..."></textarea>
 
                     <button type="button" name="action" value="clear">Clear</button>
-                    <button type="button" name="action" value="save" class="right">Save</button>
+                    <button type="button" name="action" value="save" class="right special">Save</button>
                 </div>
             </div>
 

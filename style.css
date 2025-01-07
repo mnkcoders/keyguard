@@ -60,6 +60,12 @@ body {
 .container {
     box-sizing: border-box;
 }
+.container::after{
+    content: '';
+    display: block;
+    height: 0;
+    clear: both;
+}
 
 .container.centered{
     text-align: center;
@@ -122,6 +128,7 @@ body {
     position: relative;
     float: right;
     right: 0px; top: 0px;
+    transition: ease-in 240ms;
 }
 
 .side-menu {
@@ -150,7 +157,7 @@ body {
 .side-menu+.content {
     transition: ease-in 240ms;
     vertical-align: top;
-    position: relative;
+    position: absolute;
 }
 
 .side-menu.open {
@@ -219,7 +226,7 @@ body {
 .content .container {
     max-width: 1024px;
     margin: auto;
-    border-radius: 2px;
+    border-radius: 4px;
 }
 
 .content code{
@@ -266,13 +273,9 @@ body {
 .content input[type="text"].full{
     width: 100%;
 }
-.content select,
-.content .button,
-.content button {
+select,.button,button {
     font-size: 15px;
-    color: rgba(0, 0, 0, 0.4);
-    border: 2px solid transparent;
-    background-color: rgba(255,255,255,0.8);
+    line-height: 15px;
     padding: 10px 20px;
     min-width: 180px;
     cursor: pointer;
@@ -286,37 +289,56 @@ body {
     font-weight: bold;
     box-sizing: border-box;
 }
-.content .button.special,
-.content button.special{
-    background-color: transparent;
-    border-color: rgba(255,255,255,0.5);
-    color: rgba(255,255,255,0.8);
+select{
+    appearance: none;
+    color: rgba(0,0,0,0.25);
+    border: 2px solid transparent;
+    background-color: rgba(255,255,255,0.8);
 }
-.content .button.special:not(:disabled):hover,
-.content button.special:not(:disabled):hover{
+select:focus,.button:focus,button:focus{
+    outline: none;
+    box-shadow: none;
+}
+.button,button{
+    color: rgba(255,255,255,0.8);
+    background-color: transparent;
+    border: 2px solid rgba(255,255,255,0.5);
+}
+button:active,button:hover {
     border-color: #ffffff;
     color: #ffffff;
     background-color: rgba(255,255,255,0.2);
+}
+.button.inline,button.inline{
+    display: inline-block !important;
+}
+.button.small,button.small{
+    min-width: 120px;
+    padding: 10px 10px;
+    width: auto !important;
+    border: none !important;
+    background-color: transparent;
+}
+.button.small:hover,button.small:hover,
+.button.small:active,button.small:active{
+    background-color: rgba(255,255,255,0.25);
+}
+
+.button.special,button.special{
+    color: rgba(0, 0, 0, 0.4);
+    border: 2px solid transparent;
+    background-color: rgba(255,255,255,0.8);
+}
+button.special:not(:disabled):active,
+button.special:not(:disabled):hover{
+    color: rgba(0, 0, 0, 0.15);
+    border-color: transparent;
+    background-color: #ffffff;
 }
 
 .content .button.active {
     background-color: rgba(255,255,255,1);
     color: rgba(0,0,0,.8);
-}
-
-.content select:focus {
-    outline: none;
-}
-
-.content select {
-    appearance: none;
-}
-
-.content button:active,
-.content button:hover {
-    color: rgba(0, 0, 0, 0.25);
-    border-color: transparent;
-    background-color: #ffffff;
 }
 
 .content button:disabled {
@@ -398,6 +420,7 @@ body {
 
     .content .container {
         margin: 40px auto;
+        border: 2px solid rgba(255,255,255,0.5);
     }    
     .content .textbox,
     .content textarea,
@@ -415,11 +438,15 @@ body {
     #app.white #menu-button:active {
         background-color: rgba(255, 255, 255, 0.5);
     }    
+    #app.white .content .container{
+        border: 1px solid rgba(255,255,255,0,5);
+    }
     #app.white .content .container.solid{
+        border-color: transparent;
         background-color: rgba(255, 255, 255, 0.5);
     }
     #app.white>.side-menu {
-        background-color: rgba(255, 255, 255, 0.25);
+        background-color: rgba(255, 255, 255, 0.1);
     }
     .side-menu {
         font-size: 24px;
@@ -427,7 +454,7 @@ body {
         letter-spacing: 1px;
     }
     .side-menu>.container {
-        margin-top: 40px;
+        margin-top: 80px;
     }
     .side-menu+.content {
         width: calc(100% - 80px);
@@ -478,7 +505,7 @@ body {
     .container .title{
         display: inline-block;
     }
-    .content .right {
+    .right {
         float: right;
     }
     button,.button{
@@ -524,7 +551,7 @@ body {
 .side-menu ul#saved {
     list-style-type: none;
     margin: 20px 0;
-    padding: 0 20px;
+    padding: 20px 0;
 }
 
 .content hr,
@@ -534,38 +561,60 @@ body {
     width: 100%;
 }
 
-.side-menu button {
+/*.side-menu button {
     font-size: 24px;
     letter-spacing: 1px;
     text-transform: uppercase;
-}
+}*/
 
-.side-menu button:hover,
+/*.side-menu button:hover,
 .side-menu button:active {
     background-color: rgba(255, 255, 255, 0.8);
     color: #9a9a9a;
-}
+}*/
 
 .side-menu button,
 .side-menu ul#saved li.item {
-    background-color: transparent;
     box-sizing: border-box;
     width: 100%;
-    border: 2px solid transparent;
-    border-radius: 30px;
-    color: rgba(255, 255, 255, 0.8);
-    transition: ease-in 250ms;
-    font-weight: 500;
-    margin: 10px 0;
-    padding: 8px 10px;
+    height: 40px;
     cursor: pointer;
     display: block;
-    text-align: center;
+    transition: ease-in 250ms;
+}
+.side-menu ul#saved li.item{
+    border: 2px solid transparent;
+    background-color: rgba(255, 255, 255, 0.25);
+    color: transparent;
 }
 
 .side-menu ul#saved li.item:hover,
 .side-menu ul#saved li.item:active {
-    border-color: #ffffff;
     color: #ffffff;
-    background-color: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255,255,255,0.25);
+    background-color: transparent;
+}
+
+
+.side-menu + .content > #cover{
+    display: none;
+    position: absolute;
+    pointer-events: none;
+    top: 0; left: 0; right: 0; bottom: 0;
+    transition: ease-in 240ms;
+    z-index: -10;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0s linear 0.3s; /* Visibility delayed */
+}
+.side-menu.open + .content > #cover{
+    display: block;
+    background-color: rgba(0,0,0,0.25);
+    z-index: 10;
+    cursor: pointer;
+    pointer-events: initial;
+
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease-in-out, visibility 0s linear 0s; /* Reset visibility delay */
 }

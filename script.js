@@ -250,7 +250,6 @@ View.randomMethod = function( methods = [] ){
                 list.push(m);
             }
         }
-        console.log(output);    
     }
     return output.join('');
 };
@@ -318,7 +317,7 @@ View.refreshMenu = function( items = [] ){
         const item = document.createElement('li');
         item.innerHTML = name;
         item.setAttribute('data-name',name);
-        item.className = 'item';
+        item.className = 'item button';
         item.addEventListener('click', function(e){
             e.preventDefault();
             const key = View.load(this.dataset.name);
@@ -397,6 +396,7 @@ View.initialize = function(){
             const method = View.methods();
             if( this.value.toString() === 'RANDOM' ){
                 method.value = View.randomMethod(Methods.filter(View.contentItems()));
+                this.value = '';
             }
             else{
                 method.value += this.value.toString();
@@ -481,6 +481,12 @@ View.initialize = function(){
     document.getElementById('menu-button').addEventListener('click', e => {
         e.preventDefault();
         View.menu().classList.toggle('open');
+        return true;
+    });
+
+    document.getElementById('cover').addEventListener('click', e => {
+        e.preventDefault();
+        View.menu().classList.remove('open');
         return true;
     });
 
