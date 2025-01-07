@@ -236,16 +236,41 @@ View.methods = function(){
     return document.getElementById('methods');
 };
 /**
+ * @param {String[]} methods 
+ * @returns String
+ */
+View.randomMethod = function( methods = [] ){
+    let output = [];
+    if( methods.length > 1 ){
+        let list = methods.slice();
+        for( var i = 0 ; i < methods.length ; i++ ){
+            let m = list.splice( Math.floor(Math.random() * methods.length ), 1)[0];
+            if( m !== output[output.length-1]){
+                output.push(m);
+                list.push(m);
+            }
+        }
+        console.log(output);    
+    }
+    return output.join('');
+};
+/**
  * @param {Number} size 
  * @returns {View}
  */
 View.fillMethods = function( size ){
+    const methods = Methods.filter(size || 0);
     this.inputMethod().innerHTML = "<option value=''>Select method</option>";
-    Methods.filter(size || 0).forEach(function( method ){
+    methods.forEach(function( method ){
         var option = document.createElement('option');
         option.value,option.innerHTML = method;
         View.inputMethod().appendChild(option);
     });
+    if( methods.length > 2){
+        var option = document.createElement('option');
+        option.value,option.innerHTML = 'RANDOM';
+        View.inputMethod().appendChild(option);
+    }
     return this;
 };
 /**
@@ -253,6 +278,15 @@ View.fillMethods = function( size ){
  */
 View.inputContent = function(){
     return document.getElementById('content');
+};
+/**
+ * @returns {Number}
+ */
+View.contentItems = function(){
+    const content = this.inputContent().value.toString();
+    const words = content.split(' ').length;
+    const letters = content.split('').length;
+    return words > 1 ? words : (letters > 4 ? letters : 0 );
 };
 /**
  * @returns Element
@@ -352,10 +386,7 @@ View.save = function(){
 View.initialize = function(){
 
     this.inputContent().addEventListener('change',function(e){
-        const content = this.value.toString();
-        const words = content.split(' ').length;
-        const letters = content.split('').length;
-        View.fillMethods( words > 1 ? words : (letters > 4 ? letters : 0 ) );
+        View.fillMethods( View.contentItems() );
         return true;
     });
 
@@ -364,8 +395,13 @@ View.initialize = function(){
         const selected = this.value.toString();
         if( selected.length ){
             const method = View.methods();
-            method.value += this.value.toString();
-            method.setAttribute('data-methods',method.value.toString());
+            if( this.value.toString() === 'RANDOM' ){
+                method.value = View.randomMethod(Methods.filter(View.contentItems()));
+            }
+            else{
+                method.value += this.value.toString();
+            }
+            method.setAttribute('data-methods',method.value.toString());    
         }
         return true;
     });
@@ -374,6 +410,13 @@ View.initialize = function(){
         e.preventDefault();
         this.dataset.methods,this.value = '';
         return true;
+    });
+
+    this.themes(true).forEach( function(theme){
+        const option = document.createElement('option');
+        option.value = theme;
+        option.innerHTML = View.themes()[theme];
+        View.theme().appendChild(option);
     });
 
     this.theme().addEventListener( 'change' , function(e){
@@ -444,11 +487,25 @@ View.initialize = function(){
     return this;
 };
 /**
+ * @param {Boolean} list
+ * @returns {Object|String[]}
+ */
+View.themes = function( list = false ){
+    const themes = {
+        'theme1':'Theme 1',
+        'theme2':'Theme 2',
+        'theme3':'Theme 3',
+        'theme4':'Theme 4',
+        'theme5':'Theme 5',
+    };
+    return list ? Object.keys(themes) : themes;
+};
+/**
  * @param {String} selected
  * @returns {View} 
  */
 View.changeTheme = function( selected ){
-    ['theme1','theme2'].forEach( function(theme){
+    this.themes(true).forEach( function(theme){
         if( theme === selected ){
             View.app().classList.add(theme);
         }

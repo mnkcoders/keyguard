@@ -29,6 +29,33 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
 }
+.theme3{
+    background: rgb(119,81,223);
+    background: linear-gradient(133deg, rgba(119,81,223,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr="#439CFB", endColorstr="#F187FB", GradientType=1);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.theme4{
+    background: #99C8D4;
+    background: linear-gradient(135deg, #99C8D4, #8EFCBC);  
+    background: -moz-linear-gradient(135deg, #99C8D4, #8EFCBC);
+    background: -webkit-linear-gradient(135deg, #99C8D4, #8EFCBC);
+    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr="#439CFB", endColorstr="#F187FB", GradientType=1);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.theme5{
+    background: #ec4899;
+    background-image: linear-gradient(to right, rgb(236, 72, 153), rgb(239, 68, 68), rgb(245, 158, 11));
+
+    background: linear-gradient(to right, rgb(236, 72, 153), rgb(239, 68, 68), rgb(245, 158, 11));
+    background: -moz-linear-gradient(to right, rgb(236, 72, 153), rgb(239, 68, 68), rgb(245, 158, 11));
+    background: -webkit-linear-gradient(to right, rgb(236, 72, 153), rgb(239, 68, 68), rgb(245, 158, 11));
+    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr="#439CFB", endColorstr="#F187FB", GradientType=1);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
 
 .container {
     box-sizing: border-box;
@@ -69,7 +96,7 @@ body {
 
 #app.white .content .container label{
     color: #ffffff;
-    text-transform: lowercase;
+    text-transform: uppercase;
     letter-spacing: 2px;
     font-weight: 200;
 }
