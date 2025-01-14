@@ -24,6 +24,32 @@ Content.storage = function( list = false ){
     return typeof list === 'boolean' && list ? Object.keys(storage) : storage;
 };
 /**
+ * @returns {String}
+ */
+Content.export = function(){
+    const storage = this.storage();
+    const keys = this.storage(true);
+    const content = keys.map( key => storage[key]);
+    return atob(content);
+};
+/**
+ * @param {Object} data 
+ * @returns {Content}
+ */
+Content.import = function( data ){
+    if( data.length ){
+        const storage = this.storage();
+        const content = atob( data );
+        content.forEach( function( item ){
+            if(!storage.hasOwnProperty(item._name)){
+                storage[item._name] = item;
+            }
+        });
+        this.write(content);
+    }
+    return this;
+};
+/**
  * @param {String} name 
  * @returns {Object}
  */
