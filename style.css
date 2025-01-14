@@ -587,7 +587,9 @@ button.special:not(:disabled):hover{
     background-color: rgba(255, 255, 255, 0.25);
     color: transparent;
 }
-
+.side-menu ul#saved li.item:not(:last-child){
+    margin-bottom: 20px;
+}
 .side-menu ul#saved li.item:hover,
 .side-menu ul#saved li.item:active {
     color: #ffffff;

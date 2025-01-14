@@ -125,6 +125,7 @@ View.display = function( key ){
  * @returns {View}
  */
 View.new = function(){
+    this.methods().value = '';
     return this.clear().set('form-view');
 };
 /**
